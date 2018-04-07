@@ -10,6 +10,7 @@ fun main(args: Array<String>){
     println("Formatted list 2: " + convertToString(intNumbers2, prefix = "{", separator = ", ", postfix = "}"))
     println("Formatted list 3: " + convertToString(intNumbers2))
     println("Formatted list 4: " + convertToString(intNumbers2, separator = "|"))
+    println("Formatted list 5: " + convertToString(intNumbers2, prefix = "{", postfix = "}"))
 }
 
 fun <T> convertToString(
