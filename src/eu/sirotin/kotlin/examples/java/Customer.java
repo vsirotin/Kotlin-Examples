@@ -1,4 +1,4 @@
-package eu.sirotin.kotlin.examples.eu.sirotin.kotlin.examples.kotlin.java;
+package eu.sirotin.kotlin.examples.java;
 
 
 public class Customer {

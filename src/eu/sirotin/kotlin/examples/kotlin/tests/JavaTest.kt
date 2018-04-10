@@ -1,7 +1,7 @@
 package eu.sirotin.kotlin.examples.kotlin.tests
 
-import eu.sirotin.kotlin.examples.eu.sirotin.kotlin.examples.kotlin.java.Customer
-import eu.sirotin.kotlin.examples.eu.sirotin.kotlin.examples.kotlin.java.KotlinCaller
+import eu.sirotin.kotlin.examples.java.Customer
+import eu.sirotin.kotlin.examples.java.KotlinCaller
 
 /**
  * @author vsirotin

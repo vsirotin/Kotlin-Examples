@@ -1,5 +1,6 @@
-package eu.sirotin.kotlin.examples.eu.sirotin.kotlin.examples.kotlin.java;
+package eu.sirotin.kotlin.examples.java;
 
+import eu.sirotin.kotlin.examples.extensions.StringExtensionsKt;
 import eu.sirotin.kotlin.examples.global.StringsKt;
 
 import java.util.ArrayList;
@@ -13,5 +14,8 @@ public class KotlinCaller {
         lst.add(4);
         String res = StringsKt.formatString(lst, ",", "{{", "}}");
         System.out.println("Res=" + res);
+
+        char c = StringExtensionsKt.lastChar("Java");
+        System.out.println("last char in Java is: " + c);
     }
 }
