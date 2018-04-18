@@ -1,11 +1,11 @@
 package eu.sirotin.kotlin.examples.interfaces
 
-class Responder : Respondable, Closeable {
-    override fun respond() {
-        println("I am Responder and I was called!")
+open class Responder : Respondable, Closeable {
+    final override fun respond() {
+        println("I am respond in Responder and I was called!")
     }
 
     override fun close() {
-        super.close()
+        println("I am close in Responder and I was called!")
     }
 }
