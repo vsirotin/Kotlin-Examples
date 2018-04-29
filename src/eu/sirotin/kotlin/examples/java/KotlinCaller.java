@@ -2,8 +2,11 @@ package eu.sirotin.kotlin.examples.java;
 
 import eu.sirotin.kotlin.examples.extensions.StringExtensionsKt;
 import eu.sirotin.kotlin.examples.global.StringsKt;
+import objects.FilePathComparator;
 
+import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class KotlinCaller {
@@ -17,5 +20,8 @@ public class KotlinCaller {
 
         char c = StringExtensionsKt.lastChar("Java");
         System.out.println("last char in Java is: " + c);
+
+        List<File> files = Arrays.asList(new File("Z"), new File("a"), new File("../parent"));
+        // Reserved for clearing in future files.sort(FilePathComparator.INSTANCE);
     }
 }
