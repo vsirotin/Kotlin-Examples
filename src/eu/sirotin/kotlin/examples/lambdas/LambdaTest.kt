@@ -22,6 +22,20 @@ fun main(args : Array<String>) {
     z =20
     println(adder)
     println(z)
+
+    println("Using with...")
+    with(Arithmetics(11)){
+        plus(3)
+        min(2)
+        println(this.result)
+    }
+
+    println("Using apply...")
+    Arithmetics(20).apply{
+        plus(3)
+        min(2)
+        println(this.result)
+    }
 }
 
 data class Person(val name: String, val age: Int)
@@ -33,3 +47,16 @@ val sum ={x : Int, y : Int ->
 
 var z : Int = 12
 val adder: () -> Int = {z + 3 }
+
+class Arithmetics (var result: Int) {
+    fun plus(x: Int) = {
+        this.result = this.result + x
+    }
+
+
+    fun min(x: Int) = {
+        this.result = this.result + x
+    }
+
+
+}
