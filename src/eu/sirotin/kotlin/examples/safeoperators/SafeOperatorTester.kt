@@ -4,17 +4,30 @@ fun main(args: Array<String>) {
     printUpper("gFq")
     printUpper(null)
 
-    val boss = Employeee("Boss", null)
-    val noBoss = Employeee("No Boss", boss)
+    val boss = Employee("Boss", null)
+    val noBoss = Employee("No Boss", boss)
+    val noBoss1 = Employee("No Boss", null)
 
     println(chefName(noBoss))
     println(chefName(boss))
 
-    println(strlenSafe("rewq"))
-    println(strlenSafe(null))
+    var s1 : String? = "SSSS"
+    s1?.let { printString(it) }
+    s1  = null
 
-    printEmployeeeData(noBoss)
-    printEmployeeeData(boss)
+    s1?.let { printString(it) }
+
+    println(noBoss.equals(noBoss))
+    println(noBoss.equals(noBoss1))
+    println(noBoss.equals(boss))
+    println(boss.equals(noBoss))
+    println(boss.equals(boss))
+
+    println(strLenSafe("rewq"))
+    println(strLenSafe(null))
+
+    printEmployeeData(noBoss)
+    printEmployeeData(boss)
 }
 
 fun printUpper(s : String?) {
@@ -22,17 +35,32 @@ fun printUpper(s : String?) {
     println(s1)
 }
 
-class Employeee(val name : String, val chef : Employeee?)
+fun printString(s: Any) {
+    println(s)
+}
 
-fun chefName(x : Employeee) : String? = x.chef?.name
+class Employee(val name : String, val chef : Employee?){
+    override fun equals(other: Any?): Boolean {
+        val e1 = other as? Employee ?: return false
+        if (!(name ==e1.name)) return false
+        chef ?: return (e1.chef == null)
+        return chef == e1.chef
+    }
 
-fun printEmployeeeData(x : Employeee)  {
+    override fun hashCode(): Int {
+        return super.hashCode() + 12
+    }
+}
+
+fun chefName(x : Employee) : String? = x.chef?.name
+
+fun printEmployeeData(x : Employee)  {
     println(x.name)
-    val hisChef: Employeee = x.chef
+    val hisChef: Employee = x.chef
         ?: throw IllegalArgumentException("Chef not set!")
     with(hisChef){
         println("Chef name: $name")
     }
 }
 
-fun strlenSafe(s: String?) : Int = s?.length ?: 0
+fun strLenSafe(s: String?) : Int = s?.length ?: 0
