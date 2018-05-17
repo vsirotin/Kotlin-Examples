@@ -17,17 +17,25 @@ fun main(args: Array<String>) {
 
     s1?.let { printString(it) }
 
-    println(noBoss.equals(noBoss))
-    println(noBoss.equals(noBoss1))
-    println(noBoss.equals(boss))
-    println(boss.equals(noBoss))
-    println(boss.equals(boss))
+    println(noBoss == noBoss)
+    println(noBoss == noBoss1)
+    println(noBoss == boss)
+    println(boss == noBoss)
+    println(boss == boss)
 
     println(strLenSafe("rewq"))
     println(strLenSafe(null))
 
     printEmployeeData(noBoss)
-    printEmployeeData(boss)
+    //Call raises exception
+    // printEmployeeData(boss)
+
+    val l = LateInit()
+    //Call causes exception: kotlin.UninitializedPropertyAccessException: lateinit property x has not been initialized
+    //println(l.getX())
+
+    l.setX("Aha!")
+    println(l.getX())
 }
 
 fun printUpper(s : String?) {
@@ -42,7 +50,7 @@ fun printString(s: Any) {
 class Employee(val name : String, val chef : Employee?){
     override fun equals(other: Any?): Boolean {
         val e1 = other as? Employee ?: return false
-        if (!(name ==e1.name)) return false
+        if (name !=e1.name) return false
         chef ?: return (e1.chef == null)
         return chef == e1.chef
     }
@@ -64,3 +72,13 @@ fun printEmployeeData(x : Employee)  {
 }
 
 fun strLenSafe(s: String?) : Int = s?.length ?: 0
+
+class LateInit {
+    private lateinit var x : String
+
+    fun setX(v : String) {
+        x = v
+    }
+
+    fun getX() : String = x
+}
