@@ -1,4 +1,4 @@
-package objects
+package eu.sirotin.kotlin.examples.objects
 
 import java.io.File
 

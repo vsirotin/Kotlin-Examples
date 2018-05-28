@@ -9,4 +9,12 @@ fun main(args: Array<String>) {
     println(sqrs.joinToString (", "))
 
     sqrs.forEachIndexed{index, element -> println("square of $index = $element")}
+
+    val numbers = listOf<Int?>(1, null, 12, 3)
+    listSummary(numbers)
+}
+
+fun listSummary(lst: List<Int?>)  {
+    val nonNuls = lst.filterNotNull()
+    println("Sum: ${nonNuls.sum()}")
 }

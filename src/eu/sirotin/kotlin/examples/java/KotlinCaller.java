@@ -2,7 +2,7 @@ package eu.sirotin.kotlin.examples.java;
 
 import eu.sirotin.kotlin.examples.extensions.StringExtensionsKt;
 import eu.sirotin.kotlin.examples.global.StringsKt;
-import objects.FilePathComparator;
+import eu.sirotin.kotlin.examples.objects.FilePathComparator;
 
 import java.io.File;
 import java.util.ArrayList;
