@@ -19,7 +19,7 @@ class A {
     }
 
     fun getFullInformation(): String {
-       return "I am A and contain " + B().getFullNamePublic() + " and " + C().getFullName()
+       return "I am A and contain: " + B().getFullNamePublic() + " and " + C().getFullName()
     }
 
     inner class B {
