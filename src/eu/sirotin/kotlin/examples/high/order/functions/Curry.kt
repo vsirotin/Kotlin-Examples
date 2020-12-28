@@ -2,7 +2,6 @@ package eu.sirotin.kotlin.examples.high.order.functions
 
 fun main() {
 
-    val add: (Int, Int) -> Int = { x, y -> x + y }
     val curriedAdd: (Int) -> (Int) -> Int = { x -> { y: Int -> x + y }}
 
     val z = curriedAdd(3)
@@ -14,7 +13,6 @@ fun main() {
 
     val a = f1(x, y)
     println("a = $a")
-
 
 
     val h: (Int)->(Int)->Int = curry(::f1)
