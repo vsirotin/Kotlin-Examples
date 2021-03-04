@@ -34,17 +34,20 @@ fun main() {
     val x2 = h2(7, 2)
     println("x2 = $x2")
 
+    println(create.curried()("Thomas")(1888)("Berlin"))
+
 }
 
 private fun <A, B, C> curry(f: (A, B) -> C) : (A) -> ((B) -> C)  =
     { a -> {b -> f(a,b)} }
 
-private fun f1(x: Int, y: Int) : Int
-    {return x + y}
+private fun f1(x: Int, y: Int) : Int =x + y
 
 
 private fun <A, B, C> uncurry(f: (A) -> (B) -> C): (A, B) -> C =
     { a: A, b: B -> f(a)(b) }
 
-private fun g2(x: Int) : (Int) ->String
-    {return {x ->  "RR$x"}}
+private fun g2(x: Int) : (Int) -> String = {"RR$x"}
+
+fun <A, B, C, D> ((A, B, C) -> D).curried(): (A)->(B)->(C)->(D) =
+        {a: A-> {b:B -> {c: C->this(a, b, c) }}}
