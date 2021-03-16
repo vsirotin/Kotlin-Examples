@@ -12,14 +12,6 @@ sealed class List<out A> {
                 is Nil -> 0
                 is Cons -> ints.head + sum(ints.tail)
             }
-        fun product(doubles: List<Double>): Double =
-            when (doubles) {
-                is Nil -> 1.0
-                is Cons ->
-                    if (doubles.head == 0.0) 0.0
-                    else doubles.head * product(doubles.tail)
-            }
-
 
         private fun <A, B> foldRight(xs: List<A>, z: B, f: (A, B) -> B): B =
             when (xs) {
@@ -29,8 +21,6 @@ sealed class List<out A> {
 
         fun sum2(ints: List<Int>): Int =
             foldRight(ints, 0, { a, b -> a + b })
-        fun product2(dbs: List<Double>): Double =
-            foldRight(dbs, 1.0, { a, b -> a * b })
     }
 }
 object Nil : List<Nothing>()
