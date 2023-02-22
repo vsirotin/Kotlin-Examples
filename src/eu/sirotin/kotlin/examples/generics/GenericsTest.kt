@@ -1,28 +1,32 @@
 package eu.sirotin.kotlin.examples.generics
 
-fun main(args: Array<String>){
+fun main(){
     val lst = listOf<String>("a", "bb", "asr", "cd")
     val res = copyWhenGreater(lst, "b")
-    println(res)
+    println("copyWhenGreater: res=$res")
 
     val somePair: Pair<Any?, Any?> = "items" to listOf(1, 2, 3)
 
 
     val stringToSomething = somePair.asPairOf<String, Any>()
+    println("second in stringToSomething=${stringToSomething?.second}")
+
     val stringToInt = somePair.asPairOf<String, Int>()
+    println("second in stringToInt=${stringToInt?.second}")
+
     val stringToList = somePair.asPairOf<String, List<*>>()
+    println("second in stringToList=${stringToList?.second}")
+
     val stringToStringList = somePair.asPairOf<String, List<String>>()
-
-    println(stringToStringList?.second)
+    println("second in stringToStringList=${stringToStringList?.second}")
 }
-
 //------------- out --------------------------------------
 interface Source<out T> {
     fun nextT(): T
 }
 
-fun demo(strs: Source<String>) {
-    val objects: Source<Any> = strs // This is OK, since T is an out-parameter
+fun demo(srs: Source<String>) {
+    val objects: Source<Any> = srs // This is OK, since T is an out-parameter
     // ...
 }
 
@@ -30,8 +34,8 @@ interface Source1<T> {
     fun nextT(): T
 }
 
-fun demo1(strs: Source1<String>) {
-    //val objects: Source1<Any> = strs // Compiler error
+fun demo1(srs: Source1<String>) {
+    //val objects: Source1<Any> = srs // Compiler error
 
 }
 
